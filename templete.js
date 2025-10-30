@@ -222,6 +222,7 @@ socialMediaAvg.then(function(data) {
     legend.append("text")
         .attr("x", -20)
         .attr("y", i * 20 + 12)
+        .attr("text-anchor", "start")
         .text(type)
         .attr("alignment-baseline", "middle");
     });
