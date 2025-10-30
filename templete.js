@@ -118,7 +118,7 @@ socialMedia.then(function(data) {
 
 // Prepare you data and load the data again. 
 // This data should contains three columns, platform, post type and average number of likes. 
-const socialMediaAvg = d3.csv("./socialMediaAvg.csv");
+const socialMediaAvg = d3.csv("socialMediaAvg.csv");
 
 socialMediaAvg.then(function(data) {
     // Convert string values to numbers
