@@ -4,19 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homework 3 D3 part </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+
 </head>
 <body>
+  <header class="page-header">
+    <h1 class="main-heading">Welcome to My Golf Page</h1>
+    <nav class="site-nav">
+      <a href="index.html">Home</a> |
+      <a href="details.html">About Me</a>
+    </nav>
+  </header>
 
-    <h1>Solution for the box-plot</h1>
-    <div id="boxplot"></div>
+  <main>
+    <div class="intro">
+      <h2 class="section-heading">Introduction</h2>
+      <p class="intro-text">[200-word introduction about golf...]</p>
+    </div>
 
-    <h1>Solution for the side-by-side bar plot</h1>
-    <div id="barplot"></div>
+    <div class="image-block">
+      <img src="https://s3.us-east-2.amazonaws.com/reynoldsdotcomassets/images/golf-course/GW.11.2.Kirk-1-min.jpg" alt="Golf image">
+    </div>
 
-    <h1>Solution for the line plot</h1>
-    <div id="lineplot"></div>
-    
-    <script src='https://d3js.org/d3.v7.min.js'></script>
-    <script src='templete.js'></script>   
+    <div class="charts">
+      <h1>Solution for the box-plot</h1>
+      <div id="boxplot"></div>
+
+      <h1>Solution for the side-by-side bar plot</h1>
+      <div id="barplot"></div>
+
+      <h1>Solution for the line plot</h1>
+      <div id="lineplot"></div>
+    </div>
+  </main>
+
+    <footer class="footer">
+        <p>Contact Me:</p>
+        <p>
+        <a href="mailto:haime.ju@northeastern.edu">Email: haime.ju@northeastern.edu</a> |
+        <a href="https://www.instagram.com/justiniha/">Instagram</a>
+        </p>
+    </footer>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="templete.js"></script>
 </body>
 </html>

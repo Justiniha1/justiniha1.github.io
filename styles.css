@@ -1,0 +1,146 @@
+/* Reset and basic setup */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+  color: #1b1f24;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+/* Page layout */
+.page-header,
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem 1.25rem;
+  text-align: center;
+}
+
+/* Headings */
+.main-heading {
+  margin: 1rem 0 0.5rem;
+}
+
+.sub-heading {
+  margin: 1rem 0 0.5rem;
+}
+
+.section-heading {
+  margin-top: 0.5rem;
+}
+
+.intro-text,
+.details-text {
+  font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+/* Navigation */
+.site-nav {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.site-nav a {
+  color: #006400;
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+
+.site-nav a:hover {
+  text-decoration: underline;
+}
+
+/* Text content boxes */
+.intro,
+.details-text,
+.list-block,
+.charts {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem auto;
+  text-align: left;
+}
+
+/* Images */
+.image-block {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.image-block img {
+  width: 100%;
+  max-width: 750px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.small-image img {
+  max-width: 300px;   /* smaller than the 750px default */
+}
+
+
+/* Charts */
+.charts h1 {
+  font-size: 1.3rem;
+  margin: 0.5rem 0;
+}
+
+#boxplot,
+#barplot,
+#lineplot {
+  background-color: #fff;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  min-height: 250px;
+  margin: 0.75rem 0 1.25rem;
+  padding: 0.75rem;
+}
+
+/* Lists */
+.list-block h3 {
+  color: #006400;
+}
+
+ul {
+  margin: 0.5rem 0;
+  padding-left: 1.25rem;
+}
+
+li {
+  margin: 0.25rem 0;
+}
+
+/* Footer */
+.footer {
+  background-color: #ffffff;
+  border-top: 1px solid #ddd;
+  text-align: center;
+  padding: 1rem 0.5rem;
+  margin-top: 2rem;
+  color: #1b1f24;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.footer a {
+  color: #006400;
+  text-decoration: none;
+  margin: 0 0.25rem;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
