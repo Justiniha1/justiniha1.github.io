@@ -127,7 +127,7 @@ socialMediaAvg.then(function(data) {
     });
 
     // Define the dimensions and margins for the SVG
-    const margin = { top: 20, right: 260, bottom: 60, left: 60 };
+    const margin = { top: 20, right: 60, bottom: 60, left: 60 };
     const width = 700;
     const height = 400;
 
@@ -204,13 +204,14 @@ socialMediaAvg.then(function(data) {
 
     // Add the legend
     const legend = svg.append("g")
-    .attr("transform", `translate(${width - margin.right + 20}, ${margin.top})`);
+    .attr("transform", `translate(${width / 2}, ${margin.top})`)
+    .attr("text-anchor", "middle");
 
     const types = [...new Set(data.map(d => d.PostType))];
 
     types.forEach((type, i) => {
         legend.append("rect")
-            .attr("x", 0)
+            .attr("x", -40)
             .attr("y", i * 20)
             .attr("width", 15)
             .attr("height", 15)
@@ -219,7 +220,7 @@ socialMediaAvg.then(function(data) {
     // Alread have the text information for the legend. 
     // Now add a small square/rect bar next to the text with different color.
     legend.append("text")
-        .attr("x", 20)
+        .attr("x", -20)
         .attr("y", i * 20 + 12)
         .text(type)
         .attr("alignment-baseline", "middle");
