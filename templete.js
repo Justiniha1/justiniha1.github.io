@@ -219,7 +219,7 @@ socialMediaAvg.then(function(data) {
     // Alread have the text information for the legend. 
     // Now add a small square/rect bar next to the text with different color.
     legend.append("text")
-        .attr("x", -40)
+        .attr("x", -35)
         .attr("y", i * 20 + 12)
         .attr("text-anchor", "start")
         .text(type)
