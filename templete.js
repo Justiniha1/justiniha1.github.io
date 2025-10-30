@@ -127,7 +127,7 @@ socialMediaAvg.then(function(data) {
     });
 
     // Define the dimensions and margins for the SVG
-    const margin = { top: 20, right: 60, bottom: 60, left: 60 };
+    const margin = { top: 20, right: 100, bottom: 60, left: 60 }; // Increased right margin for legend space
     const width = 700;
     const height = 400;
 
@@ -209,7 +209,7 @@ socialMediaAvg.then(function(data) {
 
     // Add the legend
     const legend = svg.append("g")
-        .attr("transform", `translate(${width - 150}, ${margin.top})`);
+        .attr("transform", `translate(${width - 180}, ${margin.top})`); // Move the legend further to the right
 
     const types = [...new Set(data.map(d => d.PostType))];
 
@@ -225,6 +225,7 @@ socialMediaAvg.then(function(data) {
         legend.append("text")
             .attr("x", 20)
             .attr("y", i * 20 + 12)
+            .attr("text-anchor", "start")
             .text(type)
             .attr("alignment-baseline", "middle");
     });
