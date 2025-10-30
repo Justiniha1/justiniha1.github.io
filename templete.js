@@ -225,10 +225,6 @@ socialMediaAvg.then(function(data) {
         .attr("alignment-baseline", "middle");
     });
 
-})
-.catch(function(err){
-    console.error("Failed to load socialMediaAvg.csv", err);
-    d3.select("#barplot").append("div").text("Error loading socialMediaAvg.csv (" + err + ")");
 });
 
 // Prepare you data and load the data again. 
