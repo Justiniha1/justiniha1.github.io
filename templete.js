@@ -114,9 +114,6 @@ socialMedia.then(function(data) {
             .attr("stroke", "#1b1f24")
             .attr("stroke-width", 2);
     });
-}).catch(function(err){
-    console.error("Failed to load socialMedia.csv", err);
-    d3.select("#boxplot").append("div").text("Error loading socialMedia.csv (" + err + ")");
 });
 
 // Prepare you data and load the data again. 
@@ -263,7 +260,4 @@ socialMediaTime.then(function(data) {
 
     // Draw the line and path. Remember to use curveNatural. 
 
-}).catch(function(err){
-    console.error("Failed to load socialMediaTime.csv", err);
-    d3.select("#lineplot").append("div").text("Error loading socialMediaTime.csv (" + err + ")");
 });
