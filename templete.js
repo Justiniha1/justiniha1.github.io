@@ -127,7 +127,7 @@ socialMediaAvg.then(function(data) {
     });
 
     // Define the dimensions and margins for the SVG
-    const margin = { top: 20, right: 180, bottom: 60, left: 60 };
+    const margin = { top: 20, right: 260, bottom: 60, left: 60 };
     const width = 700;
     const height = 400;
 
@@ -204,7 +204,7 @@ socialMediaAvg.then(function(data) {
 
     // Add the legend
     const legend = svg.append("g")
-    .attr("transform", `translate(${width - margin.right + 10}, ${margin.top})`);
+    .attr("transform", `translate(${width - margin.right + 20}, ${margin.top})`);
 
     const types = [...new Set(data.map(d => d.PostType))];
 
