@@ -99,7 +99,7 @@ socialMedia.then(function(data) {
         svg.append("rect")
             .attr("x", center - (boxWidth * 0.6) / 2)
             .attr("y", yScale(quantiles.q3))
-            .attr("width", boxWidth)
+            .attr("width", boxWidth * 0.6)
             .attr("height", Math.max(1, yScale(quantiles.q1) - yScale(quantiles.q3)))
             .attr("fill", "#ffffff")
             .attr("stroke", "#333")
@@ -107,8 +107,8 @@ socialMedia.then(function(data) {
 
         // Draw median line
         svg.append("line")
-            .attr("x1", center - boxWidth / 2)
-            .attr("x2", center + boxWidth / 2)
+            .attr("x1", center - (boxWidth * 0.6) / 2)
+            .attr("x2", center + (boxWidth * 0.6) / 2)
             .attr("y1", yScale(quantiles.median))
             .attr("y2", yScale(quantiles.median))
             .attr("stroke", "#1b1f24")
@@ -167,13 +167,15 @@ socialMediaAvg.then(function(data) {
     .attr("transform", `translate(0, ${height - margin.bottom})`)
     .call(d3.axisBottom(x0));
     
+    const platforms = [...new Set(data.map(d => d.Platform))];
     svg.append("g")
         .attr("transform", `translate(0, ${height - margin.bottom})`)
         .selectAll(".x1-axis")
-        .data(data)
+        .data(platforms)
         .enter()
         .append("g")
-        .attr("transform", d => `translate(${x0(d.Platform)}, 0)`)
+        .attr("class", "x1-axis")
+        .attr("transform", d => `translate(${x0(d)}, 0)`)
         .call(d3.axisBottom(x1));
     
     svg.append("g")
@@ -196,10 +198,11 @@ socialMediaAvg.then(function(data) {
         .text("Average Likes");
 
 // Group container for bars
-    const barGroups = svg.selectAll("bar")
+    const barGroups = svg.selectAll(".bar-group")
     .data(data)
     .enter()
     .append("g")
+    .attr("class", "bar-group")
     .attr("transform", d => `translate(${x0(d.Platform)},0)`);
 
 // Draw bars
