@@ -271,7 +271,10 @@ socialMediaTime.then(function(data) {
 
     svg.append("g")
         .attr("transform", `translate(0, ${height - margin.bottom})`)
-        .call(xAxis);
+        .call(xAxis)
+        .selectAll("text") 
+        .style("text-anchor", "end") 
+        .attr("transform", "rotate(-25)"); 
 
     svg.append("g")
         .attr("transform", `translate(${margin.left}, 0)`)
@@ -306,10 +309,9 @@ socialMediaTime.then(function(data) {
         .attr("stroke", "#1f77b4")
         .attr("stroke-width", 2);
 
-    svg.selectAll(".x-axis .tick text")
+    // Rotate the x-axis labels to prevent overlap
+    svg.selectAll(".x-axis text")
         .style("text-anchor", "end")
-        .attr("transform", "rotate(-25)")
-        .attr("dx", "-0.6em")
-        .attr("dy", "0.3em");
+        .attr("transform", "rotate(-25)");
 });
 
