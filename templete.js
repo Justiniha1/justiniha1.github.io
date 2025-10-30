@@ -170,17 +170,6 @@ socialMediaAvg.then(function(data) {
     .attr("transform", `translate(0, ${height - margin.bottom})`)
     .call(d3.axisBottom(x0));
     
-    const platforms = [...new Set(data.map(d => d.Platform))];
-    svg.append("g")
-        .attr("transform", `translate(0, ${height - margin.bottom})`)
-        .selectAll(".x1-axis")
-        .data(platforms)
-        .enter()
-        .append("g")
-        .attr("class", "x1-axis")
-        .attr("transform", d => `translate(${x0(d)}, 0)`)
-        .call(d3.axisBottom(x1));
-    
     svg.append("g")
         .attr("transform", `translate(${margin.left}, 0)`)
         .call(d3.axisLeft(y));
@@ -237,11 +226,12 @@ socialMediaAvg.then(function(data) {
         .attr("y", i * 20 + 12)
         .text(type)
         .attr("alignment-baseline", "middle");
-}).catch(function(err){
+    });
+
+})
+.catch(function(err){
     console.error("Failed to load socialMediaAvg.csv", err);
     d3.select("#barplot").append("div").text("Error loading socialMediaAvg.csv (" + err + ")");
-});
-
 });
 
 // Prepare you data and load the data again. 
