@@ -238,26 +238,77 @@ const socialMediaTime = d3.csv("socialMediaTime.csv");
 
 socialMediaTime.then(function(data) {
     // Convert string values to numbers
-    
+    data.forEach(function(d) {
+        d.AvgLikes = +d.AvgLikes;
+    });
 
     // Define the dimensions and margins for the SVG
-    
+    const margin = { top: 30, right: 30, bottom: 60, left: 60 };
+    const width = 700;
+    const height = 400;
 
     // Create the SVG container
-    
+    const svg = d3.select("#lineplot")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
 
     // Set up scales for x and y axes  
+    const xScale = d3.scaleTime()
+        .domain(d3.extent(data, d => new Date(d.Date)))  // Use d3.extent to get the min/max Date
+        .range([margin.left, width - margin.right]);
 
+    const yScale = d3.scaleLinear()
+        .domain([0, d3.max(data, d => d.AvgLikes)])  // Max AvgLikes
+        .nice()
+        .range([height - margin.bottom, margin.top]);
 
     // Draw the axis, you can rotate the text in the x-axis here
+    const xAxis = d3.axisBottom(xScale)
+        .tickFormat(d3.timeFormat("%m/%d/%Y"));
 
+    const yAxis = d3.axisLeft(yScale);
 
+    svg.append("g")
+        .attr("transform", `translate(0, ${height - margin.bottom})`)
+        .call(xAxis);
+
+    svg.append("g")
+        .attr("transform", `translate(${margin.left}, 0)`)
+        .call(yAxis);
     // Add x-axis label
-    
+    svg.append("text")
+        .attr("x", width / 2)
+        .attr("y", height - 10)
+        .attr("text-anchor", "middle")
+        .text("Date");
 
     // Add y-axis label
-
+    svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("x", -(height / 2))
+        .attr("y", 18)
+        .attr("text-anchor", "middle")
+        .text("Average Likes");
 
     // Draw the line and path. Remember to use curveNatural. 
+    const line = d3.line()
+        .x(d => xScale(new Date(d.Date)))  // Use Date for the x-coordinates
+        .y(d => yScale(d.AvgLikes))  // Use AvgLikes for the y-coordinates
+        .curve(d3.curveNatural);  // Use curveNatural for a smooth curve
 
+    // Draw the line path
+    svg.append("path")
+        .data([data])  // The line takes the data as a list of points
+        .attr("class", "line")
+        .attr("d", line)
+        .attr("fill", "none")
+        .attr("stroke", "#1f77b4")
+        .attr("stroke-width", 2);
+
+    // Rotate the x-axis labels to prevent overlap
+    svg.selectAll(".x-axis text")
+        .style("text-anchor", "end")
+        .attr("transform", "rotate(-25)");
 });
+
