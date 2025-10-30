@@ -114,6 +114,9 @@ socialMedia.then(function(data) {
             .attr("stroke", "#1b1f24")
             .attr("stroke-width", 2);
     });
+}).catch(function(err){
+    console.error("Failed to load socialMedia.csv", err);
+    d3.select("#boxplot").append("div").text("Error loading socialMedia.csv (" + err + ")");
 });
 
 // Prepare you data and load the data again. 
@@ -234,6 +237,9 @@ socialMediaAvg.then(function(data) {
         .attr("y", i * 20 + 12)
         .text(type)
         .attr("alignment-baseline", "middle");
+}).catch(function(err){
+    console.error("Failed to load socialMediaAvg.csv", err);
+    d3.select("#barplot").append("div").text("Error loading socialMediaAvg.csv (" + err + ")");
 });
 
 });
@@ -267,4 +273,7 @@ socialMediaTime.then(function(data) {
 
     // Draw the line and path. Remember to use curveNatural. 
 
+}).catch(function(err){
+    console.error("Failed to load socialMediaTime.csv", err);
+    d3.select("#lineplot").append("div").text("Error loading socialMediaTime.csv (" + err + ")");
 });
