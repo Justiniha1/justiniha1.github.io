@@ -306,9 +306,10 @@ socialMediaTime.then(function(data) {
         .attr("stroke", "#1f77b4")
         .attr("stroke-width", 2);
 
-    // Rotate the x-axis labels to prevent overlap
-    svg.selectAll(".x-axis text")
+    svg.selectAll(".x-axis .tick text")
         .style("text-anchor", "end")
-        .attr("transform", "rotate(-25)");
+        .attr("transform", "rotate(-25)")
+        .attr("dx", "-0.6em")
+        .attr("dy", "0.3em");
 });
 
