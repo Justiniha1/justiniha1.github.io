@@ -127,8 +127,8 @@ socialMediaAvg.then(function(data) {
     });
 
     // Define the dimensions and margins for the SVG
-    const margin = { top: 20, right: 100, bottom: 60, left: 60 };
-    const width = 1000;
+    const margin = { top: 30, right: 30, bottom: 60, left: 60 };
+    const width = 700;
     const height = 400;
 
     // Create the SVG container
