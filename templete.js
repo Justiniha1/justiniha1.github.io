@@ -149,7 +149,6 @@ socialMediaAvg.then(function(data) {
 
     const y = d3.scaleLinear()
         .domain([0, d3.max(data, d => d.AvgLikes)])
-
         .range([height - margin.bottom, margin.top]);
 
     const color = d3.scaleOrdinal()
@@ -198,7 +197,7 @@ socialMediaAvg.then(function(data) {
 
     // Add the legend
     const legend = svg.append("g")
-        .attr("transform", `translate(${width - 180}, ${margin.top})`);
+        .attr("transform", `translate(${width}, ${margin.top})`);
 
     const types = [...new Set(data.map(d => d.PostType))];
 
