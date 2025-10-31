@@ -140,7 +140,8 @@ socialMediaAvg.then(function(data) {
     // Define scales
     const x0 = d3.scaleBand()
         .domain([...new Set(data.map(d => d.Platform))])
-        .range([margin.left, width - margin.right]);
+        .range([margin.left, width - margin.right])
+        .padding(0.1);
 
     const x1 = d3.scaleBand()
         .domain([...new Set(data.map(d => d.PostType))]) 
@@ -197,7 +198,7 @@ socialMediaAvg.then(function(data) {
 
     // Add the legend
     const legend = svg.append("g")
-        .attr("transform", `translate(${width - 75}, ${margin.top})`);
+        .attr("transform", `translate(${width - 180}, ${margin.top})`);
 
     const types = [...new Set(data.map(d => d.PostType))];
 
