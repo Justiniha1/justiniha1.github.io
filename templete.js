@@ -197,7 +197,7 @@ socialMediaAvg.then(function(data) {
 
     // Add the legend
     const legend = svg.append("g")
-        .attr("transform", `translate(${width}, ${margin.top})`);
+        .attr("transform", `translate(${width - 75}, ${margin.top})`);
 
     const types = [...new Set(data.map(d => d.PostType))];
 
