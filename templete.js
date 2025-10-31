@@ -139,17 +139,16 @@ socialMediaAvg.then(function(data) {
 
     // Define scales
     const x0 = d3.scaleBand()
-        .domain([...new Set(data.map(d => d.Platform))])  // Unique platforms
+        .domain([...new Set(data.map(d => d.Platform))])
         .range([margin.left, width - margin.right]);
-        
+
     const x1 = d3.scaleBand()
-        .domain([...new Set(data.map(d => d.PostType))])  // Unique post types
+        .domain([...new Set(data.map(d => d.PostType))]) 
         .range([0, x0.bandwidth()])
         .padding(0.05);
 
     const y = d3.scaleLinear()
-        .domain([0, d3.max(data, d => d.AvgLikes)])  // Max AvgLikes
-        .nice()
+        .domain([0, d3.max(data, d => d.AvgLikes)])
         .range([height - margin.bottom, margin.top]);
 
     const color = d3.scaleOrdinal()
