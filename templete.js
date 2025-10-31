@@ -140,9 +140,8 @@ socialMediaAvg.then(function(data) {
     // Define scales
     const x0 = d3.scaleBand()
         .domain([...new Set(data.map(d => d.Platform))])  // Unique platforms
-        .range([margin.left, width - margin.right])
-        .padding(0.1);
-
+        .range([margin.left, width - margin.right]);
+        
     const x1 = d3.scaleBand()
         .domain([...new Set(data.map(d => d.PostType))])  // Unique post types
         .range([0, x0.bandwidth()])
