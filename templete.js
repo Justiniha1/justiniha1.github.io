@@ -127,7 +127,7 @@ socialMediaAvg.then(function(data) {
     });
 
     // Define the dimensions and margins for the SVG
-    const margin = { top: 30, right: 30, bottom: 60, left: 60 };
+    const margin = { top: 20, right: 100, bottom: 60, left: 60 };
     const width = 700;
     const height = 400;
 
@@ -139,17 +139,18 @@ socialMediaAvg.then(function(data) {
 
     // Define scales
     const x0 = d3.scaleBand()
-        .domain([...new Set(data.map(d => d.Platform))])
+        .domain([...new Set(data.map(d => d.Platform))])  // Unique platforms
         .range([margin.left, width - margin.right])
         .padding(0.1);
 
     const x1 = d3.scaleBand()
-        .domain([...new Set(data.map(d => d.PostType))]) 
+        .domain([...new Set(data.map(d => d.PostType))])  // Unique post types
         .range([0, x0.bandwidth()])
         .padding(0.05);
 
     const y = d3.scaleLinear()
-        .domain([0, d3.max(data, d => d.AvgLikes)])
+        .domain([0, d3.max(data, d => d.AvgLikes)])  // Max AvgLikes
+        .nice()
         .range([height - margin.bottom, margin.top]);
 
     const color = d3.scaleOrdinal()
