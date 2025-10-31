@@ -128,7 +128,7 @@ socialMediaAvg.then(function(data) {
 
     // Define the dimensions and margins for the SVG
     const margin = { top: 20, right: 100, bottom: 60, left: 60 }; // Increased right margin for legend space
-    const width = 900; // widen bar chart
+    const width = 700;
     const height = 400;
 
     // Create the SVG container
