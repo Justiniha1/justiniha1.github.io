@@ -1,9 +1,6 @@
-/* Reset and basic setup */
-
-
 body {
-  background-color: #f8f9fa;
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #d6e9c6; 
+  font-family: 'Bricolage Grotesque', sans-serif; 
 }
 
 /* Page layout */
@@ -14,41 +11,48 @@ main {
   text-align: center;
 }
 
-.intro-text,
-.details-text {
-  font-family: 'Bricolage Grotesque', sans-serif;
+/* Text content boxes */
+.intro,
+.details-text,
+.list-block,
+.charts {
+  background-color: #ffffff; 
+  border: 1px solid #6c757d;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem auto;
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
 }
 
 /* Navigation */
 .site-nav {
   margin: 1rem 0;
-  padding: 0.5rem;
-  background-color: white;
+  background-color: #28a745; 
   border: 1px solid #ddd;
   border-radius: 10px;
 }
 
 .site-nav a {
-  color: #006400;
+  color: #ffffff; 
   text-decoration: none;
   margin: 0 0.5rem;
 }
 
 .site-nav a:hover {
   text-decoration: underline;
+  color: #ffeb3b; 
 }
 
-/* Text content boxes */
-.intro,
-.details-text,
-.list-block,
-.charts {
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 1rem;
-  margin: 1rem auto;
-  text-align: left;
+/* Heading styling */
+.main-heading {
+  font-size: 2.5rem;
+  color: #006400;
+}
+
+.sub-heading {
+  font-size: 1.8rem;
+  color: #28a745; 
 }
 
 /* Images */
@@ -65,20 +69,20 @@ main {
 }
 
 .small-image img {
-  max-width: 300px;   /* smaller than the 750px default */
+  max-width: 300px;   
 }
-
 
 /* Charts */
 .charts h1 {
   font-size: 1.3rem;
   margin: 0.5rem 0;
+  color: #006400; 
 }
 
 #boxplot,
 #barplot,
 #lineplot {
-  background-color: #fff;
+  background-color: #ffffff;
   border: 1px dashed #ccc;
   border-radius: 8px;
   min-height: 250px;
@@ -109,5 +113,5 @@ main {
 
 .footer a:hover {
   text-decoration: underline;
+  color: #28a745; 
 }
-
