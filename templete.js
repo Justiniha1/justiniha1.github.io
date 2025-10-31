@@ -127,7 +127,7 @@ socialMediaAvg.then(function(data) {
     });
 
     // Define the dimensions and margins for the SVG
-    const margin = { top: 20, right: 100, bottom: 60, left: 60 }; // Increased right margin for legend space
+    const margin = { top: 20, right: 100, bottom: 60, left: 60 };
     const width = 700;
     const height = 400;
 
@@ -137,7 +137,7 @@ socialMediaAvg.then(function(data) {
         .attr("width", width)
         .attr("height", height);
 
-    // Define four scales
+    // Define scales
     const x0 = d3.scaleBand()
         .domain([...new Set(data.map(d => d.Platform))])  // Unique platforms
         .range([margin.left, width - margin.right])
@@ -154,23 +154,13 @@ socialMediaAvg.then(function(data) {
         .range([height - margin.bottom, margin.top]);
 
     const color = d3.scaleOrdinal()
-    .domain([...new Set(data.map(d => d.PostType))])
-    .range(["#1f77b4", "#ff7f0e", "#2ca02c"]);
+        .domain([...new Set(data.map(d => d.PostType))])
+        .range(["#1f77b4", "#ff7f0e", "#2ca02c"]);
 
     // Add x0-axis (Platform)
     svg.append("g")
         .attr("transform", `translate(0, ${height - margin.bottom})`)
         .call(d3.axisBottom(x0));
-
-    // Add x1-axis (PostType) — make sure it’s placed correctly inside each Platform group
-    svg.append("g")
-        .attr("transform", `translate(0, ${height - margin.bottom})`)
-        .selectAll(".x1-axis")
-        .data(data)
-        .enter()
-        .append("g")
-        .attr("transform", d => `translate(${x0(d.Platform)}, 0)`)
-        .call(d3.axisBottom(x1));
 
     // Add y-axis (AvgLikes)
     svg.append("g")
@@ -193,27 +183,37 @@ socialMediaAvg.then(function(data) {
         .text("Average Likes");
 
     // Group container for bars
+    const platforms = [...new Set(data.map(d => d.Platform))];
+    const postTypes = [...new Set(data.map(d => d.PostType))];
+    const dataByPlatform = d3.group(data, d => d.Platform);
+
     const barGroups = svg.selectAll(".bar-group")
-        .data(data)
+        .data(platforms)
         .enter()
         .append("g")
-        .attr("transform", d => `translate(${x0(d.Platform)}, 0)`);
+        .attr("class", "bar-group")
+        .attr("transform", d => `translate(${x0(d)}, 0)`);
 
     // Draw bars
-    barGroups.append("rect")
+    barGroups.selectAll("rect")
+        .data(d => {
+            const items = dataByPlatform.get(d) || [];
+            const byType = new Map(items.map(item => [item.PostType, item]));
+            return postTypes.map(t => byType.get(t));
+        })
+        .enter()
+        .append("rect")
         .attr("x", d => x1(d.PostType))
-        .attr("y", d => y(d.AvgLikes))  
-        .attr("width", x1.bandwidth())   
-        .attr("height", d => height - margin.bottom - y(d.AvgLikes))  
-        .attr("fill", d => color(d.PostType));  // Set the color based on PostType
+        .attr("y", d => y(d.AvgLikes))
+        .attr("width", x1.bandwidth())
+        .attr("height", d => height - margin.bottom - y(d.AvgLikes))
+        .attr("fill", d => color(d.PostType));
 
     // Add the legend
     const legend = svg.append("g")
-        .attr("transform", `translate(${width - 180}, ${margin.top})`); // Move the legend further to the right
+        .attr("transform", `translate(${width - margin.right + 10}, ${margin.top})`);
 
-    const types = [...new Set(data.map(d => d.PostType))];
-
-    types.forEach((type, i) => {
+    postTypes.forEach((type, i) => {
         legend.append("rect")
             .attr("x", 0)
             .attr("y", i * 20)
