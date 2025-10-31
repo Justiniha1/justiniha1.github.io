@@ -149,6 +149,7 @@ socialMediaAvg.then(function(data) {
 
     const y = d3.scaleLinear()
         .domain([0, d3.max(data, d => d.AvgLikes)])
+
         .range([height - margin.bottom, margin.top]);
 
     const color = d3.scaleOrdinal()
