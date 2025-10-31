@@ -162,7 +162,8 @@ socialMediaAvg.then(function(data) {
         .attr("transform", `translate(0, ${height - margin.bottom})`)
         .call(d3.axisBottom(x0));
 
-    // Add x1-axis (PostType) — make sure it’s placed correctly inside each Platform group
+    // Add x1-axis (PostType) — make sure it's placed correctly inside each Platform group
+    // Post type labels removed from x-axis (kept in legend only)
     svg.append("g")
         .attr("transform", `translate(0, ${height - margin.bottom})`)
         .selectAll(".x1-axis")
@@ -170,7 +171,7 @@ socialMediaAvg.then(function(data) {
         .enter()
         .append("g")
         .attr("transform", d => `translate(${x0(d.Platform)}, 0)`)
-        .call(d3.axisBottom(x1));
+        .call(d3.axisBottom(x1).tickFormat(""));
 
     // Add y-axis (AvgLikes)
     svg.append("g")
