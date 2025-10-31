@@ -1,17 +1,9 @@
 /* Reset and basic setup */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+
 
 body {
-  margin: 0;
-  padding: 0;
   background-color: #f8f9fa;
-  color: #1b1f24;
   font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.6;
 }
 
 /* Page layout */
@@ -19,21 +11,7 @@ body {
 main {
   max-width: 900px;
   margin: 0 auto;
-  padding: 1rem 1.25rem;
   text-align: center;
-}
-
-/* Headings */
-.main-heading {
-  margin: 1rem 0 0.5rem;
-}
-
-.sub-heading {
-  margin: 1rem 0 0.5rem;
-}
-
-.section-heading {
-  margin-top: 0.5rem;
 }
 
 .intro-text,
@@ -80,7 +58,6 @@ main {
 }
 
 .image-block img {
-  width: 100%;
   max-width: 750px;
   border-radius: 10px;
   border: 1px solid #ddd;
@@ -114,15 +91,6 @@ main {
   color: #006400;
 }
 
-ul {
-  margin: 0.5rem 0;
-  padding-left: 1.25rem;
-}
-
-li {
-  margin: 0.25rem 0;
-}
-
 /* Footer */
 .footer {
   background-color: #ffffff;
@@ -135,7 +103,6 @@ li {
 }
 
 .footer a {
-  color: #006400;
   text-decoration: none;
   margin: 0 0.25rem;
 }

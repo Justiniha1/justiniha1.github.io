@@ -157,12 +157,10 @@ socialMediaAvg.then(function(data) {
         .domain([...new Set(data.map(d => d.PostType))])
         .range(["#1f77b4", "#ff7f0e", "#2ca02c"]);
 
-    // Add x0-axis (Platform)
     svg.append("g")
         .attr("transform", `translate(0, ${height - margin.bottom})`)
         .call(d3.axisBottom(x0));
 
-    // Add y-axis (AvgLikes)
     svg.append("g")
         .attr("transform", `translate(${margin.left}, 0)`)
         .call(d3.axisLeft(y));
